@@ -25,7 +25,9 @@ function App() {
 
   function submitForm() {
     setOutput("");
+    setTextColor("black")
     if (buyingPrice <= 0 || quantity <= 0 || currentPrice <= 0) {
+      setTextColor("darkred")
       setOutput("Invalid Input");
     } else {
       console.log(
@@ -42,7 +44,7 @@ function App() {
         let lossPercentage = ((loss / (buyingPrice * quantity)) * 100).toFixed(2);
         setTextColor("red")
         setOutput(
-          `You have loss of ${loss} and loss Percentage is ${lossPercentage}% .`
+          `You have loss of ${loss} and loss Percentage is ${lossPercentage}% 😢 .`
         );
       }
       // profit
@@ -52,13 +54,13 @@ function App() {
         setTextColor("green");
 
         setOutput(
-          `You gain a Profit of ${profit} and profit Percentage is ${profitPercentage}%`
+          `You gain a Profit of ${profit} and profit Percentage is ${profitPercentage}% 🤩`
         );
       }
       // No profit, No loss
       else {
         setTextColor("black");
-        setOutput(`No profit, No loss`);
+        setOutput(`No profit, No loss 😐`);
       }
     }
   }
