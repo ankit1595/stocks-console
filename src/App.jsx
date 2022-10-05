@@ -9,17 +9,17 @@ function App() {
   const [textColor, setTextColor] = useState("black");
 
   function handleBuyingPriceInput(e) {
-    setBuyingPrice(e.target.value);
+    setBuyingPrice(Number(e.target.value));
     setOutput("");
   }
 
   function handleQuantityInput(e) {
-    setQuantity(e.target.value);
+    setQuantity(Number(e.target.value));
     setOutput("");
   }
 
   function handleCurrentPriceInput(e) {
-    setCurrentPrice(e.target.value);
+    setCurrentPrice(Number(e.target.value));
     setOutput("");
   }
 
@@ -28,9 +28,16 @@ function App() {
     if (buyingPrice <= 0 || quantity <= 0 || currentPrice <= 0) {
       setOutput("Invalid Input");
     } else {
+      console.log(
+        "buying price, current price: ",
+        typeof buyingPrice,
+        typeof currentPrice,
+        buyingPrice > currentPrice
+      );
       //calculate Profit and loss
       // loss
       if (buyingPrice > currentPrice) {
+        console.log('loss')
         let loss = ((buyingPrice - currentPrice) * quantity).toFixed(2);
         let lossPercentage = ((loss / (buyingPrice * quantity)) * 100).toFixed(2);
         setTextColor("red")
