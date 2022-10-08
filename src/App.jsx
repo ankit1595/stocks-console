@@ -27,24 +27,18 @@ function App() {
     setOutput("");
     setTextColor("#17a2b8");
     if (buyingPrice <= 0 || quantity <= 0 || currentPrice <= 0) {
-      setTextColor("#dc3545");
+      setTextColor("red");
       setOutput("Invalid Input");
     } else {
-      console.log(
-        "buying price, current price: ",
-        typeof buyingPrice,
-        typeof currentPrice,
-        buyingPrice > currentPrice
-      );
+
       //calculate Profit and loss
       // loss
       if (buyingPrice > currentPrice) {
-        console.log("loss");
         let loss = ((buyingPrice - currentPrice) * quantity).toFixed(2);
         let lossPercentage = ((loss / (buyingPrice * quantity)) * 100).toFixed(
           2
         );
-        setTextColor("red");
+        setTextColor("#dc3545");
         setOutput(
           `You have loss of ${loss} and loss Percentage is ${lossPercentage}%. 😢`
         );
