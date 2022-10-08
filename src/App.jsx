@@ -6,7 +6,7 @@ function App() {
   const [quantity, setQuantity] = useState("");
   const [currentPrice, setCurrentPrice] = useState("");
   const [output, setOutput] = useState("");
-  const [textColor, setTextColor] = useState("black");
+  const [textColor, setTextColor] = useState("#17a2b8");
 
   function handleBuyingPriceInput(e) {
     setBuyingPrice(Number(e.target.value));
@@ -25,9 +25,9 @@ function App() {
 
   function submitForm() {
     setOutput("");
-    setTextColor("black")
+    setTextColor("#17a2b8");
     if (buyingPrice <= 0 || quantity <= 0 || currentPrice <= 0) {
-      setTextColor("darkred")
+      setTextColor("#dc3545");
       setOutput("Invalid Input");
     } else {
       console.log(
@@ -39,19 +39,24 @@ function App() {
       //calculate Profit and loss
       // loss
       if (buyingPrice > currentPrice) {
-        console.log('loss')
+        console.log("loss");
         let loss = ((buyingPrice - currentPrice) * quantity).toFixed(2);
-        let lossPercentage = ((loss / (buyingPrice * quantity)) * 100).toFixed(2);
-        setTextColor("red")
+        let lossPercentage = ((loss / (buyingPrice * quantity)) * 100).toFixed(
+          2
+        );
+        setTextColor("red");
         setOutput(
-          `You have loss of ${loss} and loss Percentage is ${lossPercentage}% 😢 .`
+          `You have loss of ${loss} and loss Percentage is ${lossPercentage}%. 😢`
         );
       }
       // profit
       else if (buyingPrice < currentPrice) {
         let profit = ((currentPrice - buyingPrice) * quantity).toFixed(2);
-        let profitPercentage = ((profit / (buyingPrice * quantity)) * 100).toFixed(2);
-        setTextColor("green");
+        let profitPercentage = (
+          (profit / (buyingPrice * quantity)) *
+          100
+        ).toFixed(2);
+        setTextColor("#28a745");
 
         setOutput(
           `You gain a Profit of ${profit} and profit Percentage is ${profitPercentage}% 🤩`
@@ -59,7 +64,7 @@ function App() {
       }
       // No profit, No loss
       else {
-        setTextColor("black");
+        setTextColor("#17a2b8");
         setOutput(`No profit, No loss 😐`);
       }
     }
@@ -74,37 +79,46 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Stocks Console</h1>
-      <label>
-        Buying Price:
-        <input
-          type="number"
-          placeholder="Enter Cost Price"
-          onChange={handleBuyingPriceInput}
-          value={buyingPrice}
-        />
-      </label>
-      <label>
-        Stocks Quantity
-        <input
-          type="number"
-          placeholder="Enter Number of Stocks"
-          onChange={handleQuantityInput}
-          value={quantity}
-        />
-      </label>
-      <label>
-        Current Price:
-        <input
-          type="number"
-          placeholder="Enter Current Price"
-          onChange={handleCurrentPriceInput}
-          value={currentPrice}
-        />
-      </label>
-      <button onClick={submitForm}>Calculate</button>
-      <button onClick={resetForm}>Reset</button>
-      <div style={{color: textColor}}>{output}</div>
+      <header>
+        <h1>Stocks Profit or Loss Calculator</h1>
+      </header>
+
+      <main>
+        <label>
+          Buying Price:
+          <input
+            type="number"
+            placeholder="Enter Cost Price"
+            onChange={handleBuyingPriceInput}
+            value={buyingPrice}
+          />
+        </label>
+        <label>
+          Stocks Quantity:
+          <input
+            type="number"
+            placeholder="Enter Number of Stocks"
+            onChange={handleQuantityInput}
+            value={quantity}
+          />
+        </label>
+        <label>
+          Current Price:
+          <input
+            type="number"
+            placeholder="Enter Current Price"
+            onChange={handleCurrentPriceInput}
+            value={currentPrice}
+          />
+        </label>
+        <button onClick={submitForm}>Calculate</button>
+        <button style={{backgroundColor: "#dc3545", color: "white", borderColor: "#dc3545"}} onClick={resetForm}>
+          Reset
+        </button>
+        <div className="output" style={{ color: textColor }}>
+          {output}
+        </div>
+      </main>
     </div>
   );
 }
