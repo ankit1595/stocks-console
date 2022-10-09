@@ -72,3 +72,43 @@ button:hover {
   font-weight: bold;
   margin: 1.5rem;
 }
+/* footer */
+.footer {
+  background-color: var(--primary-color);
+  color: var(--bg-color);
+  padding: 2rem 1rem;
+  text-align: center;
+  border-radius: 0rem 1rem 0rem 0rem;
+  margin-top: 100px;
+}
+
+.footer .link {
+  color: var(--bg-color);
+  padding: 0;
+}
+
+.footer .link img {
+  width: 30px;
+}
+
+.footer ul {
+  padding-inline-start: 0px;
+}
+
+.footer-header {
+  font-weight: bold;
+  font-size: x-large;
+}
+
+.link {
+  padding: 0.5rem 1rem;
+}
+
+.list-non-bullet {
+  list-style: none;
+}
+
+.list-item-inline {
+  display: inline;
+  padding: 0rem 0.5rem;
+}
